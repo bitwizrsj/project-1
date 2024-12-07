@@ -7,4 +7,9 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      external: ['lucide-react'], // Mark lucide-react as external (or any other module that's causing issues)
+    }
+  }
 });
