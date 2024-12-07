@@ -1,29 +1,54 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import React, { useState } from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const templateParams = {
+      to_name: "naam", // Replace "naam" with the recipient's name if available
+      from_name: formData.name, // User's name
+      from_email: formData.email, // User's email
+      message: formData.message, // User's message
+    };
+  
+    emailjs
+      .send(
+        "service_nbectlk", // Replace with your actual EmailJS service ID
+        "template_azr880u", // Replace with your actual EmailJS template ID
+        templateParams,
+        "1Ay1s6EjozEEWRxbk" // Replace with your actual EmailJS public key
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" }); // Reset form
+        },
+        (error) => {
+          console.error("Failed to send message:", error); // Log detailed error
+          alert(`Failed to send the message: ${error.text}`);
+        }
+      );
+  };
+  
+
   return (
     <div className="min-h-screen">
-            <div className="bg-slate-900 h-16 w-full"></div>
+      <div className="bg-slate-900 h-16 w-full"></div>
       {/* Hero Section */}
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
@@ -41,7 +66,9 @@ const Contact = () => {
           <div className="bg-white p-8 rounded-lg shadow-md">
             <form onSubmit={handleSubmit}>
               <div className="mb-6">
-                <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Name</label>
+                <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+                  Name
+                </label>
                 <input
                   type="text"
                   id="name"
@@ -53,7 +80,9 @@ const Contact = () => {
                 />
               </div>
               <div className="mb-6">
-                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email</label>
+                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -65,7 +94,9 @@ const Contact = () => {
                 />
               </div>
               <div className="mb-6">
-                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Message</label>
+                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
+                  Message
+                </label>
                 <textarea
                   id="message"
                   name="message"
