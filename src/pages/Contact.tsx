@@ -129,14 +129,14 @@ const Contact = () => {
               <Phone className="h-6 w-6 text-blue-600 mt-1" />
               <div>
                 <h3 className="text-lg font-semibold mb-1">Call Us</h3>
-                <p className="text-gray-600">+1 (555) 123-4567</p>
+                <p className="text-gray-600">+91 6395697514</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
               <MapPin className="h-6 w-6 text-blue-600 mt-1" />
               <div>
                 <h3 className="text-lg font-semibold mb-1">Visit Us</h3>
-                <p className="text-gray-600">123 Tech Street, Silicon Valley, CA 94025</p>
+                <p className="text-gray-600">6 Akash Vihar Colony Mathura UP 281006 INDIA</p>
               </div>
             </div>
           </div>

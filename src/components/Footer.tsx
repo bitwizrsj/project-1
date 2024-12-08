@@ -74,9 +74,9 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>123 Tech Street</li>
-              <li>Silicon Valley, CA 94025</li>
-              <li>Phone: +1 (555) 123-4567</li>
+              <li>6 Akash Vihar Colony</li>
+              <li>Mathura, UP 281006</li>
+              <li>Phone: +91 6395697514</li>
               <li>Email: info@CyberBrain AI Solutions LLP.com</li>
             </ul>
           </div>
