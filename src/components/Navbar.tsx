@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Code2, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import completeLogo from '../../assets/logo_complete.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,7 +32,9 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <Code2 className="h-8 w-8 text-blue-600" />
+            {/* Use the imported image here */}
+            <img src={completeLogo} alt="Logo" className="h-8 w-8" />
+
               <span
                 className={`font-bold text-xl ${
                   isScrolled ? 'text-gray-900' : 'text-white'
