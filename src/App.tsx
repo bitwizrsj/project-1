@@ -10,10 +10,12 @@ import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Blog from './components/Blog';
 import BlogDetail from './components/BlogDetail';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <Navbar />
         <main className="flex-grow">
