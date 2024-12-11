@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative h-screen">
+      <div className="relative h-screen bg-slate-100">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -46,7 +46,7 @@ const Home = () => {
       {/* Stats Section */}
       <Stats />
 
-      <ClientsSection />
+      
       
       {/* About Home */ }
       <AboutHome />
@@ -58,6 +58,8 @@ const Home = () => {
 
       {/* Technology Stack */}
       <TechnologyStack />
+      
+      <ClientsSection />
 
       {/* Testimonials */}
       <Testimonials />
@@ -85,22 +87,5 @@ const Home = () => {
   );
 };
 
-const services = [
-  {
-    icon: () => <div className="i-lucide-code-2" />,
-    title: "Custom Software Development",
-    description: "Tailored solutions designed to meet your specific business needs"
-  },
-  {
-    icon: () => <div className="i-lucide-smartphone" />,
-    title: "Mobile App Development",
-    description: "Native and cross-platform mobile applications"
-  },
-  {
-    icon: () => <div className="i-lucide-cloud" />,
-    title: "Cloud Solutions",
-    description: "Scalable and secure cloud infrastructure services"
-  }
-];
 
 export default Home;

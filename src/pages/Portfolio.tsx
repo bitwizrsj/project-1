@@ -2,7 +2,7 @@ import React from 'react';
 
 const Portfolio = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-100">
                   <div className="bg-slate-900 h-16 w-full"></div>
 
 

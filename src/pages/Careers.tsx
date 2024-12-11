@@ -45,16 +45,15 @@ const Careers = () => {
             );
     };
 
-
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-slate-100">
             <div className="bg-slate-900 h-16 w-full"></div>
             {/* Hero Section */}
             <div className="py-20">
                 <div className="max-w-7xl mx-auto px-4 text-center">
-                    <h1 className="text-4xl font-bold mb-6">Get in Touch</h1>
+                    <h1 className="text-4xl font-bold mb-6">Job Opportunities</h1>
                     <p className="text-xl max-w-3xl mx-auto">
-                        Ready to start your project? Contact us today for a free consultation.
+                        Ready to join a team that values innovation and collaboration? Explore our career opportunities.
                     </p>
                 </div>
             </div>
@@ -116,40 +115,38 @@ const Careers = () => {
                         </form>
                     </div>
 
-                    {/* Contact Information */}
+                    {/* Job Opportunities Information */}
                     <div className="space-y-8">
-  <div className="flex items-start space-x-4">
-    <div className="h-6 w-6 text-blue-600 mt-1">
-      {/* You can add an icon related to App Development here */}
-    </div>
-    <div>
-      <h3 className="text-lg font-semibold mb-1">App Developer</h3>
-      <p className="text-gray-600">Join our team and build cutting-edge mobile applications!</p>
-    </div>
-  </div>
+                        <div className="flex items-start space-x-4">
+                            <div className="h-6 w-6 text-blue-600 mt-1">
+                                {/* You can add an icon related to App Development here */}
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold mb-1">App Developer</h3>
+                                <p className="text-gray-600">Join our team and build cutting-edge mobile applications!</p>
+                            </div>
+                        </div>
 
-  <div className="flex items-start space-x-4">
-    <div className="h-6 w-6 text-blue-600 mt-1">
-      {/* You can add an icon related to Web Development here */}
-    </div>
-    <div>
-      <h3 className="text-lg font-semibold mb-1">Web Developer</h3>
-      <p className="text-gray-600">Be part of our web development team and create amazing user experiences!</p>
-    </div>
-  </div>
+                        <div className="flex items-start space-x-4">
+                            <div className="h-6 w-6 text-blue-600 mt-1">
+                                {/* You can add an icon related to Web Development here */}
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold mb-1">Web Developer</h3>
+                                <p className="text-gray-600">Be part of our web development team and create amazing user experiences!</p>
+                            </div>
+                        </div>
 
-  <div className="flex items-start space-x-4">
-    <div className="h-6 w-6 text-blue-600 mt-1">
-      {/* You can add an icon related to Data Science here */}
-    </div>
-    <div>
-      <h3 className="text-lg font-semibold mb-1">Data Scientist</h3>
-      <p className="text-gray-600">Use your data analysis skills to help shape our future decisions!</p>
-    </div>
-  </div>
-</div>
-
-
+                        <div className="flex items-start space-x-4">
+                            <div className="h-6 w-6 text-blue-600 mt-1">
+                                {/* You can add an icon related to Data Science here */}
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-semibold mb-1">Data Scientist</h3>
+                                <p className="text-gray-600">Use your data analysis skills to help shape our future decisions!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

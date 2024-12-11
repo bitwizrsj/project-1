@@ -3,7 +3,7 @@ import { Code2, Smartphone, Cloud, Shield, Database, BarChart3 } from 'lucide-re
 
 const Services = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-slate-100">
       <div className="bg-slate-900 h-16 w-full"></div>
 
       {/* Hero Section */}
