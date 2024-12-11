@@ -1,4 +1,3 @@
-// BlogDetail.tsx
 import React from "react";
 import { useParams } from "react-router-dom";
 import { blogData } from "./blogData";

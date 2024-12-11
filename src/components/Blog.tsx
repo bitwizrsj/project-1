@@ -1,4 +1,3 @@
-// Blog.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { blogData } from "./blogData"; // Import static blog data
@@ -11,7 +10,7 @@ const Blog = () => {
         {blogData.map((blog) => (
           <div key={blog.id} className="border-b pb-8">
             <h3 className="text-2xl font-semibold text-blue-600 hover:text-blue-800 transition-colors">
-              <Link to={blog.link}>{blog.title}</Link>
+              <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
             </h3>
             <p className="text-gray-600 mt-2">{blog.description}</p>
             <p className="text-gray-500 text-sm mt-2">{blog.date}</p>
