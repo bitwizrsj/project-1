@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import completeLogo from '../../assets/logo_complete.png';
+import Logo from '../../assets/logo.png';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,14 +33,14 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
             {/* Use the imported image here */}
-            <img src={completeLogo} alt="Logo" className="h-8 w-8" />
+            <img src={Logo} alt="Logo" className="h-8 w-8" />
 
               <span
                 className={`font-bold text-xl ${
                   isScrolled ? 'text-gray-900' : 'text-white'
                 }`}
               >
-                CyberBrain AI Solutions LLP
+                CyberBrain Technology
               </span>
             </Link>
           </div>
@@ -78,6 +78,14 @@ const Navbar = () => {
               }`}
             >
               Portfolio
+            </Link>
+            <Link
+              to="/blogs"
+              className={`hover:text-blue-600 ${
+                isScrolled ? 'text-gray-900' : 'text-white'
+              }`}
+            >
+              Blogs
             </Link>
             <Link
               to="/contact"
@@ -135,6 +143,13 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               Portfolio
+            </Link>
+            <Link
+              to="/blogs"
+              className="block text-gray-900 hover:text-blue-600"
+              onClick={toggleMenu}
+            >
+              Blogs
             </Link>
             <Link
               to="/contact"

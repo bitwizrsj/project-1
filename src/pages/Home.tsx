@@ -64,18 +64,24 @@ const Home = () => {
       <Testimonials />
 
       {/* CTA Section */}
-      <div className="bg-blue-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Business?</h2>
-          <p className="text-xl mb-8">Let's discuss how we can help you achieve your goals</p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Contact Us <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
-        </div>
-      </div>
+      <div className="bg-gradient-to-r from-teal-500 to-blue-600 text-white py-16">
+  <div className="max-w-7xl mx-auto px-4 text-center">
+    <h2 className="text-4xl font-extrabold mb-4 text-white tracking-tight">
+      Ready to Join Our Innovative Team?
+    </h2>
+    <p className="text-lg mb-8 text-opacity-80">
+      Unlock your potential and grow with us. Explore exciting career opportunities today!
+    </p>
+    <Link
+      to="/careers"
+      className="inline-flex items-center bg-white text-teal-600 px-8 py-4 rounded-lg shadow-lg hover:bg-teal-100 transition-all duration-300 ease-in-out transform hover:scale-105"
+    >
+      View Careers <ArrowRight className="ml-2 h-5 w-5" />
+    </Link>
+  </div>
+</div>
+
+
     </div>
   );
 };
