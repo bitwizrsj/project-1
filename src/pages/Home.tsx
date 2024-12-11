@@ -6,7 +6,6 @@ import Testimonials from '../components/home/Testimonials';
 import TechnologyStack from '../components/home/TechnologyStack';
 import AboutHome from '../components/home/AboutHome';
 import ServicesHome from '../components/home/ServicesHome';
-import ClientSectors from '../components/home/ClientSectors';
 import { ClientsSection } from '../components/ClientsSection';
 
 const Home = () => {

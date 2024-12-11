@@ -4,7 +4,9 @@ import { blogData } from "./blogData"; // Import static blog data
 
 const Blog = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16">
+    <div>
+      <div className="bg-slate-900 h-16 w-full"></div>
+      <div className="max-w-7xl mx-auto px-4 py-16">
       <h2 className="text-3xl font-bold text-center mb-8">Latest Blogs</h2>
       <div className="space-y-8">
         {blogData.map((blog) => (
@@ -18,6 +20,8 @@ const Blog = () => {
         ))}
       </div>
     </div>
+    </div>
+    
   );
 };
 
