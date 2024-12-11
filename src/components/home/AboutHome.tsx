@@ -1,5 +1,6 @@
 import React from 'react';
 import { Users, Target, Lightbulb } from 'lucide-react';
+import img from '../../../assets/AboutHome.png'
 
 const features = [
   {
@@ -33,7 +34,7 @@ export default function AboutHome() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+              src={img}
               alt="Team collaboration"
               className="rounded-lg shadow-xl"
             />
