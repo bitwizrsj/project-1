@@ -36,7 +36,7 @@ const Testimonials = () => {
 
 const testimonials = [
   {
-    content: "CyberBrain AI Solutions LLP transformed our business with their innovative solutions. Their team's expertise and dedication were exceptional.",
+    content: "CyberBrain Technology transformed our business with their innovative solutions. Their team's expertise and dedication were exceptional.",
     name: "John Smith",
     role: "CEO, TechCorp",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"

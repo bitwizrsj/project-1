@@ -22,22 +22,22 @@ const Stats = () => {
 const stats = [
   {
     icon: Users,
-    value: "500+",
+    value: "100+",
     label: "Happy Clients"
   },
   {
     icon: Award,
-    value: "150+",
+    value: "40+",
     label: "Projects Completed"
   },
   {
     icon: Code2,
-    value: "50+",
+    value: "10+",
     label: "Expert Developers"
   },
   {
     icon: Building2,
-    value: "10+",
+    value: "02+",
     label: "Years Experience"
   }
 ];
