@@ -12,7 +12,7 @@ const About = () => {
         <div className="absolute inset-0 bg-pattern opacity-10"></div>
         <div className="relative max-w-5xl mx-auto px-4 py-24 text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold text-slate-800 mb-6 tracking-tight">
-            CyberBrain Technology
+            Xyphramin
           </h1>
           <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">
             Transforming businesses through innovative technology solutions in web development, mobile applications, and data science.

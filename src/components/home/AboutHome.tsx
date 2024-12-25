@@ -1,59 +1,90 @@
-import React from 'react';
-import { Users, Target, Lightbulb } from 'lucide-react';
-import img from '../../../assets/AboutHome.png'
+import React from "react";
+import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-const features = [
-  {
-    icon: Users,
-    title: 'Expert Team',
-    description: 'Our talented professionals bring years of industry experience'
-  },
-  {
-    icon: Target,
-    title: 'Goal-Oriented',
-    description: 'We focus on delivering measurable results for our clients'
-  },
-  {
-    icon: Lightbulb,
-    title: 'Innovation First',
-    description: 'Staying ahead with cutting-edge technologies and methodologies'
-  }
-];
+export default function AboutUs() {
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Animates only the first time it's in view
+    threshold: 0.2, // Trigger when 20% of the component is visible
+  });
 
-export default function AboutHome() {
   return (
-    <section className="py-20 bg-gray-50" id="about">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">About CyberBrain Technology</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're a forward-thinking software development company dedicated to delivering innovative solutions that drive business growth.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-            <img
-              src={img}
-              alt="Team collaboration"
-              className="rounded-lg shadow-xl"
+    <section ref={ref} className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid md:grid-cols-2 gap-12 items-center">
+        {/* Left Section: Image Collage */}
+        <motion.div
+          className="relative grid grid-cols-1 gap-4"
+          initial={{ opacity: 0, x: -50 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1 }}
+        >
+          <div className="grid gap-4">
+            <motion.img
+              src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              alt="Meeting"
+              className="rounded-lg shadow-lg w-full h-80 object-cover lg:mt-10"
+              initial={{ scale: 0.8 }}
+              animate={inView ? { scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
             />
+            <motion.div
+              className="bg-purple-700 text-white rounded-lg shadow-lg p-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              <h3 className="text-lg font-bold">15 Years Experiences</h3>
+              <p className="text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </motion.div>
           </div>
+        </motion.div>
 
-          <div className="space-y-8">
-            {features.map((feature, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <feature.icon className="w-6 h-6 text-blue-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Right Section: Content */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="text-purple-600 text-lg font-semibold uppercase mb-2">
+            About Us
+          </h2>
+          <motion.h3
+            className="text-3xl font-bold text-gray-900 leading-tight mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            We deliver innovative software solutions that drive business growth.
+          </motion.h3>
+          <motion.p
+            className="text-gray-600 text-lg mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            Expert Team | Goal-Oriented | Innovation First
+          </motion.p>
+          <Link to="/about">
+      <motion.button
+        className="bg-purple-700 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-purple-600 transition"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        Learn More
+      </motion.button>
+    </Link>
+          <motion.img
+            src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt="Team Collaboration"
+            className="rounded-lg shadow-lg w-full h-60 mt-6 object-cover col-span-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 1, delay: 1.5 }}
+          />
+        </motion.div>
       </div>
     </section>
   );

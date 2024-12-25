@@ -40,7 +40,7 @@ const Navbar = () => {
                   isScrolled ? 'text-gray-900' : 'text-white'
                 }`}
               >
-                CyberBrain Technology
+                Xyphramin
               </span>
             </Link>
           </div>
@@ -86,6 +86,14 @@ const Navbar = () => {
               }`}
             >
               Blogs
+            </Link>
+            <Link
+              to="/careers"
+              className={`hover:text-blue-600 ${
+                isScrolled ? 'text-gray-900' : 'text-white'
+              }`}
+            >
+              Careers
             </Link>
             <Link
               to="/contact"
@@ -150,6 +158,13 @@ const Navbar = () => {
               onClick={toggleMenu}
             >
               Blogs
+            </Link>
+            <Link
+              to="/careers"
+              className="block text-gray-900 hover:text-blue-600"
+              onClick={toggleMenu}
+            >
+              Careers
             </Link>
             <Link
               to="/contact"

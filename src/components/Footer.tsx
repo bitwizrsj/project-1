@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Code2 className="h-8 w-8 text-blue-400" />
-              <span className="font-bold text-xl">CyberBrain Technology</span>
+              <span className="font-bold text-xl">Xyphramin</span>
             </div>
             <p className="text-gray-400 mb-4">
               Transforming businesses through innovative software solutions.
@@ -83,7 +83,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} CyberBrain Technology. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Xyphramin. All rights reserved.</p>
         </div>
       </div>
     </footer>

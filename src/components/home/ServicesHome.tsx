@@ -1,89 +1,97 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { Code, Smartphone, Cloud, Shield, Database, LineChart } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import code from "../../../assets/codeicon.png";
+import creative from "../../../assets/creative.png";
+import growth from "../../../assets/growth.png";
 
-const ScrollableDiv = styled.div`
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
-  -webkit-overflow-scrolling: touch;
-`;
-
-const services = [
-  {
-    icon: Code,
-    title: 'Software Development',
-    description: 'Tailored solutions designed to meet your specific business needs'
-  },
-  {
-    icon: Smartphone,
-    title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications'
-  },
-  {
-    icon: Cloud,
-    title: 'Cloud Solutions',
-    description: 'Scalable and secure cloud infrastructure services'
-  },
-  {
-    icon: Shield,
-    title: 'Cybersecurity',
-    description: 'Comprehensive security solutions for your digital assets'
-  },
-  {
-    icon: Database,
-    title: 'Data Analytics',
-    description: 'Transform your data into actionable insights'
-  },
-  {
-    icon: LineChart,
-    title: 'Digital Transformation',
-    description: 'Guide your business through digital evolution'
-  }
-];
-
-export default function Services() {
+const ServicesHome = () => {
   return (
-    <section className="py-20 bg-white" id="services">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">Our Services</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Comprehensive software solutions tailored to elevate your business
-          </p>
-        </div>
-
-        <ScrollableDiv>
+    <section className="bg-gradient-to-br text-purple-900 py-16 rounded-lg ">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <h2 className="text-center text-4xl font-bold mb-12">
+          Our <span className="text-purple-600">Services</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="group flex-shrink-0 w-80 p-6 bg-gray-50 rounded-xl hover:bg-blue-600 transition-all duration-300 relative"
-            >
-              <service.icon className="w-12 h-12 text-blue-600 group-hover:text-white mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 group-hover:text-white mb-2">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 group-hover:text-gray-100">
-                {service.description}
-              </p> <br></br> <br />
-              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-full text-center">
-                <Link
-                  to="/services"
-                  className="inline-block text-blue-600 hover:text-white font-medium group-hover:text-white border-b-2 border-transparent group-hover:border-white transition-all duration-300"
-                >
-                  Learn more →
-                </Link>
-              </div>
-            </div>
+            <ServiceCard key={index} service={service} />
           ))}
-        </ScrollableDiv>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+const ServiceCard = ({ service }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="p-8 bg-white rounded-lg shadow-lg hover:scale-105 transition-transform"
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 1 }}
+    >
+      <div className="flex justify-center mb-6">
+        <img
+          src={service.image}
+          alt={`${service.title} illustration`}
+          className={`h-24 w-24 object-contain ${
+            service.title === "Digital Marketing" ? "w-32" : ""
+          }`}
+        />
+      </div>
+      <h3 className="text-2xl font-bold text-center text-black-800 mb-4">
+        {service.title}
+      </h3>
+      <ul className="text-black-700 text-sm list-disc list-inside">
+        {service.details.map((detail, i) => (
+          <li key={i}>{detail}</li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+};
+
+const services = [
+  {
+    image: code,
+    title: "Development",
+    details: [
+      "App Development",
+      "Web Development",
+      "UI/UX Design",
+      "API Integration",
+      "Chatbot Development",
+      "Custom Software Solutions",
+    ],
+  },
+  {
+    image: creative,
+    title: "Creative",
+    details: [
+      "Logo Design",
+      "Video Editing",
+      "Brand Identity",
+      "Social Media Graphics",
+      "Illustrations",
+    ],
+  },
+  {
+    image: growth,
+    title: "Digital Marketing",
+    details: [
+      "SEO Optimization",
+      "Content Marketing",
+      "Social Media Campaigns",
+      "Email Marketing",
+      "PPC Advertising",
+    ],
+  },
+];
+
+export default ServicesHome;
