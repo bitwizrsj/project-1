@@ -1,86 +1,68 @@
 import React from "react";
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Star } from "lucide-react";
+import 'swiper/css';
 
 const Testimonials = () => {
-  const sliderRef = React.useRef(null);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
-
   return (
     <section className="bg-gradient-to-br py-16 text-purple-900 rounded-lg">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <h2 className="text-center text-4xl font-bold mb-12">
           What Our <span className="text-purple-600">Clients Say</span>
         </h2>
-        {/* Navigation Buttons */}
-        <div className="flex justify-between items-center mb-6">
-          <button
-            onClick={() => sliderRef.current.slickPrev()}
-            className="bg-purple-600 text-white px-4 py-2 top-1/2 rounded-full shadow-lg hover:bg-purple-700 transition"
-            aria-label="Previous"
-          >
-            &#8249;
-          </button>
-          <button
-            onClick={() => sliderRef.current.slickNext()}
-            className="bg-purple-600 text-white px-4 py-2 top-1/2 rounded-full shadow-lg hover:bg-purple-700 transition"
-            aria-label="Next"
-          >
-          &#8250;
-          </button>
-        </div>
-        {/* Slider */}
-        <Slider ref={sliderRef} {...settings}>
+
+        {/* Swiper Slider with Pagination (dots) */}
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={3}
+          loop={true}
+          pagination={{
+            clickable: true, // Make dots clickable
+            el: ".swiper-pagination", // Use default Swiper pagination
+          }}
+          breakpoints={{
+            1024: {
+              slidesPerView: 2,
+            },
+            640: {
+              slidesPerView: 1,
+            },
+          }}
+          className="testimonial-slider"
+        >
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="p-6">
-              <div className="bg-white p-6 rounded-lg shadow-md hover:scale-105 transition-transform">
-                <div className="flex text-yellow-400 mb-4 justify-center">
-                  {[...Array(testimonial.stars)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-600 text-center mb-4">
-                  "{testimonial.content}"
-                </p>
-                <div className="flex items-center justify-center">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4"
-                  />
-                  <div className="text-center">
-                    <div className="font-semibold text-purple-800">
-                      {testimonial.name}
+            <SwiperSlide key={index}>
+              <div className="p-6">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:scale-105 transition-transform">
+                  <div className="flex text-yellow-400 mb-4 justify-center">
+                    {[...Array(testimonial.stars)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-600 text-center mb-4">
+                    "{testimonial.content}"
+                  </p>
+                  <div className="flex items-center justify-center">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full mr-4"
+                    />
+                    <div className="text-center">
+                      <div className="font-semibold text-purple-800">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-gray-500 text-sm">{testimonial.role}</div>
                     </div>
-                    <div className="text-gray-500 text-sm">{testimonial.role}</div>
                   </div>
                 </div>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
+
+        {/* Swiper Pagination (dots) */}
+        <div className="swiper-pagination mt-6"></div>
       </div>
     </section>
   );
