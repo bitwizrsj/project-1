@@ -17,7 +17,7 @@ const Footer = () => {
             <span
                 className= "text-white font-bold"
               >
-                Xyphramin
+                Xyphramin Technologies 
               </span>
             </Link>
           </div>
@@ -31,7 +31,7 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-white">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="https://www.linkedin.com/company/cyberbrain-technologies/about/?viewAsMember=true" className="text-gray-400 hover:text-white">
+              <a href="https://www.linkedin.com/company/cyberbrain-ai-technologies/" className="text-gray-400 hover:text-white">
                 <Linkedin className="h-5 w-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white">
@@ -91,7 +91,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>© {new Date().getFullYear()} Xyphramin. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Xyphramin Technologies. All rights reserved.</p>
         </div>
       </div>
     </footer>

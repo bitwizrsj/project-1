@@ -40,7 +40,7 @@ const Navbar = () => {
                   isScrolled ? 'text-gray-900' : 'text-white'
                 }`}
               >
-                Xyphramin
+                Xyphramin Technologies
               </span>
             </Link>
           </div>
@@ -49,7 +49,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className={`hover:text-blue-600 ${
+              className={`hover:text-purple-600 ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}
             >
@@ -57,7 +57,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/about"
-              className={`hover:text-blue-600 ${
+              className={`hover:text-purple-600 ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}
             >
@@ -65,7 +65,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/services"
-              className={`hover:text-blue-600 ${
+              className={`hover:text-purple-600 ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}
             >
@@ -73,7 +73,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/portfolio"
-              className={`hover:text-blue-600 ${
+              className={`hover:text-purple-600 ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}
             >
@@ -81,7 +81,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/blogs"
-              className={`hover:text-blue-600 ${
+              className={`hover:text-purple-600 ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}
             >
@@ -89,7 +89,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/careers"
-              className={`hover:text-blue-600 ${
+              className={`hover:text-purple-600 ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}
             >
@@ -97,7 +97,7 @@ const Navbar = () => {
             </Link>
             <Link
               to="/contact"
-              className={`hover:text-blue-600 ${
+              className={`hover:text-purple-600 ${
                 isScrolled ? 'text-gray-900' : 'text-white'
               }`}
             >
@@ -126,49 +126,49 @@ const Navbar = () => {
           <div className="md:hidden mt-2 space-y-2 bg-white shadow-lg rounded-lg p-4">
             <Link
               to="/"
-              className="block text-gray-900 hover:text-blue-600"
+              className="block text-gray-900 hover:text-purple-600"
               onClick={toggleMenu}
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="block text-gray-900 hover:text-blue-600"
+              className="block text-gray-900 hover:text-purple-600"
               onClick={toggleMenu}
             >
               About
             </Link>
             <Link
               to="/services"
-              className="block text-gray-900 hover:text-blue-600"
+              className="block text-gray-900 hover:text-purple-600"
               onClick={toggleMenu}
             >
               Services
             </Link>
             <Link
               to="/portfolio"
-              className="block text-gray-900 hover:text-blue-600"
+              className="block text-gray-900 hover:text-purple-600"
               onClick={toggleMenu}
             >
               Portfolio
             </Link>
             <Link
               to="/blogs"
-              className="block text-gray-900 hover:text-blue-600"
+              className="block text-gray-900 hover:text-purple-600"
               onClick={toggleMenu}
             >
               Blogs
             </Link>
             <Link
               to="/careers"
-              className="block text-gray-900 hover:text-blue-600"
+              className="block text-gray-900 hover:text-purple-600"
               onClick={toggleMenu}
             >
               Careers
             </Link>
             <Link
               to="/contact"
-              className="block text-gray-900 hover:text-blue-600"
+              className="block text-gray-900 hover:text-purple-600"
               onClick={toggleMenu}
             >
               Contact

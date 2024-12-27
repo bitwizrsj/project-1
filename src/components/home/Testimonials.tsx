@@ -1,24 +1,31 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 import { Star } from "lucide-react";
-import 'swiper/css';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Testimonials = () => {
   return (
-    <section className="bg-gradient-to-br py-16 text-purple-900 rounded-lg">
+    <section className="bg-gradient-to-br py-16 text-purple-900 rounded-lg relative">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <h2 className="text-center text-4xl font-bold mb-12">
           What Our <span className="text-purple-600">Clients Say</span>
         </h2>
 
-        {/* Swiper Slider with Pagination (dots) */}
+        {/* Swiper Slider */}
         <Swiper
           spaceBetween={30}
-          slidesPerView={3}
+          slidesPerView={1}
           loop={true}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
           pagination={{
-            clickable: true, // Make dots clickable
-            el: ".swiper-pagination", // Use default Swiper pagination
+            clickable: true,
+            el: ".swiper-pagination",
           }}
           breakpoints={{
             1024: {
@@ -28,6 +35,7 @@ const Testimonials = () => {
               slidesPerView: 1,
             },
           }}
+          modules={[Navigation, Pagination]}
           className="testimonial-slider"
         >
           {testimonials.map((testimonial, index) => (
@@ -52,7 +60,9 @@ const Testimonials = () => {
                       <div className="font-semibold text-purple-800">
                         {testimonial.name}
                       </div>
-                      <div className="text-gray-500 text-sm">{testimonial.role}</div>
+                      <div className="text-gray-500 text-sm">
+                        {testimonial.role}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -61,7 +71,11 @@ const Testimonials = () => {
           ))}
         </Swiper>
 
-        {/* Swiper Pagination (dots) */}
+        {/* Navigation Buttons */}
+        <div className="swiper-button-prev absolute left-4 top-2/3 transform -translate-y-1/2 z-10 text-purple-600 p-2 rounded-full cursor-pointer "></div>
+        <div className="swiper-button-next absolute right-4 top-2/3 transform -translate-y-1/2 z-10 text-purple-600 p-2 rounded-full cursor-pointer "></div>
+
+        {/* Swiper Pagination */}
         <div className="swiper-pagination mt-6"></div>
       </div>
     </section>
@@ -73,8 +87,9 @@ const testimonials = [
     content: "Xyphramin transformed our business with their innovative solutions. Their team's expertise were exceptional.",
     name: "John Smith",
     role: "CEO, TechCorp",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
-    stars: 5,
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80",
+    stars: 5
   },
   {
     content: "The mobile app they developed exceeded our expectations. Professional team and outstanding results.",
