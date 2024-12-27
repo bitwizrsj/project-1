@@ -85,7 +85,7 @@ const Footer = () => {
               <li>6 Akash Vihar Colony</li>
               <li>Mathura, UP 281006</li>
               <li>Phone: +91 6395697514</li>
-              <li>Email: info@cyberbrainai.com </li>
+              <li>Email: info@xyphramin.com </li>
             </ul>
           </div>
         </div>

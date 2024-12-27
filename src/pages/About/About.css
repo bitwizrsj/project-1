@@ -1,0 +1,17 @@
+
+.bg-dark-blue {
+    background-color: #12192c;
+  }
+  
+  .bg-dark-gray {
+    background-color: #1c253b;
+  }
+  
+  .text-primary {
+    color: #4ade80; /* Example green for highlights */
+  }
+  
+  .border-primary {
+    border-color: #4ade80;
+  }
+  
