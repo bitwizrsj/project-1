@@ -27,7 +27,7 @@ export default function TechnologyStack() {
   ];
 
   return (
-    <section ref={ref} className="py-20 bg-gray-50">
+    <section ref={ref} className="py-20 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Section: Content */}
         <motion.div
