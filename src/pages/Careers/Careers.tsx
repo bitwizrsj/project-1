@@ -16,17 +16,17 @@ const Careers: React.FC = () => {
         <div className='py-20'>
             <JobSearch searchTerm={searchTerm} onSearchChange={setSearchTerm} />
       
-      <div className="max-w-7xl mx-auto flex gap-6">
-        <JobCategories
-          selectedCategory={selectedCategory}
-          onCategorySelect={setSelectedCategory}
-        />
-        <JobList
-          searchTerm={searchTerm}
-          selectedCategory={selectedCategory}
-          onApply={setSelectedJob}
-        />
-      </div>
+            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
+  <JobCategories
+    selectedCategory={selectedCategory}
+    onCategorySelect={setSelectedCategory}
+  />
+  <JobList
+    searchTerm={searchTerm}
+    selectedCategory={selectedCategory}
+    onApply={setSelectedJob}
+  />
+</div>
         </div>
         
       

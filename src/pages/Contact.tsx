@@ -24,7 +24,7 @@ const Contact = () => {
     e.preventDefault();
     
     const templateParams = {
-      to_name: "naam",
+      to_name: "Suneel Kumar",
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,

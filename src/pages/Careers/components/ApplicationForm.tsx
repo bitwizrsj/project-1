@@ -16,10 +16,10 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle, onClose }) 
     if (form.current) {
       emailjs
         .sendForm(
-          'YOUR_SERVICE_ID',
-          'YOUR_TEMPLATE_ID',
+          'service_a292lrb',
+          'template_wvaqmj9',
           form.current,
-          'YOUR_PUBLIC_KEY'
+          '1Ay1s6EjozEEWRxbk'
         )
         .then(
           (result) => {
@@ -89,14 +89,14 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ jobTitle, onClose }) 
           </div>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700">Resume/CV</label>
-            <input
-              type="file"
-              name="resume"
-              accept=".pdf,.doc,.docx"
-              required
-              className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-            />
+          <label className="block text-sm font-medium text-gray-700">Resume/CV Link</label>
+  <input
+    type="url"
+    name="resume_link"
+    placeholder="Paste the link to your Resume/CV (e.g., Google Drive, Dropbox)"
+    required
+    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+  />
           </div>
           
           <button
