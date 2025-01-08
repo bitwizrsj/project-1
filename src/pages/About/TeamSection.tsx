@@ -10,7 +10,7 @@ const team = [
     role: "CEO & Founder",
     image: AmitKumar,
     thoughts:
-      "At Cyberbrain AI, we believe in the transformative potential of artificial intelligence to shape a better tomorrow. Our vision is rooted in innovation, learning, and creating impactful solutions that address real-world challenges. Through dedication and collaboration, we strive to build a future where technology serves as a catalyst for growth and opportunity. I invite you to explore our initiatives and join us on this exciting journey toward progress and excellence.",
+      "At Xyphramin, we believe in the transformative potential of artificial intelligence to shape a better tomorrow. Our vision is rooted in innovation, learning, and creating impactful solutions that address real-world challenges. Through dedication and collaboration, we strive to build a future where technology serves as a catalyst for growth and opportunity. I invite you to explore our initiatives and join us on this exciting journey toward progress and excellence.",
     socials: {
       twitter: "https://twitter.com/example",
       instagram: "https://instagram.com/example",
@@ -22,7 +22,7 @@ const team = [
     role: "CTO",
     image: AjayKumar,
     thoughts:
-      "At Cyberbrain AI, I take immense pride in leading a team dedicated to harnessing the transformative power of artificial intelligence. With a strong foundation in Computer Science Engineering and Artificial Intelligence, I aim to drive innovation that addresses modern challenges and unlocks new possibilities. Through creativity and expertise, we are shaping solutions that bridge the gap between advanced technology and practical application. Together, we are paving the way for a future defined by intelligence, efficiency, and boundless potential.",
+      "At Xyphramin, I take immense pride in leading a team dedicated to harnessing the transformative power of artificial intelligence. With a strong foundation in Computer Science Engineering and Artificial Intelligence, I aim to drive innovation that addresses modern challenges and unlocks new possibilities. Through creativity and expertise, we are shaping solutions that bridge the gap between advanced technology and practical application. Together, we are paving the way for a future defined by intelligence, efficiency, and boundless potential.",
     socials: {
       twitter: "https://twitter.com/example",
       instagram: "https://instagram.com/example",

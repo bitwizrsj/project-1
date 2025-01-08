@@ -34,7 +34,7 @@ export default function AboutUs() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              <h3 className="text-lg font-bold">15 Years Experiences</h3>
+              <h3 className="text-lg font-bold">2+ Years Experiences</h3>
               <p className="text-sm">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
