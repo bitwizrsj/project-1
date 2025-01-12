@@ -31,10 +31,10 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-white">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="https://www.linkedin.com/company/cyberbrain-ai-technologies/" className="text-gray-400 hover:text-white">
+              <a href="https://www.linkedin.com/company/xyphramintechnologies/" className="text-gray-400 hover:text-white">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://www.instagram.com/xyphramintechnology?igsh=MWVtYnhkMmpsbnQwcQ==" className="text-gray-400 hover:text-white">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>

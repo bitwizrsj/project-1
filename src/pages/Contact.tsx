@@ -139,7 +139,7 @@ const Contact = () => {
             <Twitter size={24} />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/xyphramintechnology?igsh=MWVtYnhkMmpsbnQwcQ=="
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-700 transition-colors"
@@ -147,7 +147,7 @@ const Contact = () => {
             <Instagram size={24} />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/company/xyphramintechnologies/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-700 transition-colors"
@@ -166,7 +166,7 @@ const Contact = () => {
               </div>
               <div className="flex items-center space-x-4 text-purple-600">
                 <Mail className="h-6 w-6" />
-                <span>info@CyberBrainAI.com</span>
+                <span>info@xyphramin.com</span>
               </div>
               <div className="flex items-center space-x-4 text-purple-600">
                 <MapPin className="h-6 w-6" />
