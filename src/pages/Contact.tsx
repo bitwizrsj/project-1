@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
-import emailjs from '@emailjs/browser';
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
-
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,54 +8,41 @@ const Contact = () => {
     message: "",
   });
 
-  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [loading, setLoading] = useState(false); // Track loading state
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const templateParams = {
-      to_name: "Suneel Kumar",
-      from_name: formData.name,
-      from_email: formData.email,
-      message: formData.message,
-    };
-  
-    emailjs
-      .send(
-        "service_nbectlk",
-        "template_azr880u",
-        templateParams,
-        "1Ay1s6EjozEEWRxbk"
-      )
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          setFormData({ name: "", email: "", message: "" });
-        },
-        (error) => {
-          console.error("Failed to send message:", error);
-          alert(`Failed to send the message: ${error.text}`);
-        }
-      );
-  };
+    setLoading(true); // Set loading to true when submission starts
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle newsletter submission
-    console.log("Newsletter subscription for:", newsletterEmail);
-    setNewsletterEmail("");
+    try {
+      const response = await fetch("http://localhost:5002/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send message.");
+    } finally {
+      setLoading(false); // Set loading to false once the submission is done
+    }
   };
 
   return (
     <div className="min-h-screen bg-slate-100">
-            <div className="bg-slate-900 h-16 w-full"></div>
+      <div className="bg-slate-900 h-16 w-full"></div>
       {/* Hero Section */}
       <div className="py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
@@ -108,55 +92,59 @@ const Contact = () => {
               <button
                 type="submit"
                 className="w-full bg-purple-600 text-white py-3 px-6 rounded-md hover:bg-purple-700 transition-colors"
+                disabled={loading} // Disable button while loading
               >
-                Send Message
+                {loading ? (
+                  <span>Submitting...</span> // Loading state
+                ) : (
+                  "Send Message"
+                )}
               </button>
             </form>
           </div>
 
           {/* Follow Us Section */}
-<div className="space-y-8">
-<div className="bg-white p-6 rounded-lg shadow-sm">
-        <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
-        <p className="text-gray-600 mb-4">
-          Stay connected with us on social media for the latest updates and news!
-        </p>
-        <div className="flex gap-4">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 transition-colors"
-          >
-            <Facebook size={24} />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 transition-colors"
-          >
-            <Twitter size={24} />
-          </a>
-          <a
-            href="https://www.instagram.com/xyphramintechnology?igsh=MWVtYnhkMmpsbnQwcQ=="
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 transition-colors"
-          >
-            <Instagram size={24} />
-          </a>
-          <a
-            href="https://www.linkedin.com/company/xyphramintechnologies/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 transition-colors"
-          >
-            <Linkedin size={24} />
-          </a>
-        </div>
-      </div>
-
+          <div className="space-y-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+              <p className="text-gray-600 mb-4">
+                Stay connected with us on social media for the latest updates and news!
+              </p>
+              <div className="flex gap-4">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  <Facebook size={24} />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  <Twitter size={24} />
+                </a>
+                <a
+                  href="https://www.instagram.com/xyphramintechnology?igsh=MWVtYnhkMmpsbnQwcQ=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  <Instagram size={24} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/xyphramintechnologies/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                >
+                  <Linkedin size={24} />
+                </a>
+              </div>
+            </div>
 
             {/* Contact Information */}
             <div className="space-y-6">
@@ -173,23 +161,22 @@ const Contact = () => {
                 <span>6 Akash Vihar Colony Mathura UP 281006 INDIA</span>
               </div>
             </div>
-
-            
           </div>
         </div>
+
         {/* Map Section */}
-<div className="w-full h-64 bg-slate-200 mt-16 rounded-lg overflow-hidden">
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.4488550156184!2d77.66302227545846!3d27.45528217632791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397377bd3d9222e5%3A0xf7f3b4a11882fd2c!2sXyphramin%20Technologies!5e0!3m2!1sen!2sin!4v1735270032450!5m2!1sen!2sin"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen={true}
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
-</div>
+        <div className="w-full h-64 bg-slate-200 mt-16 rounded-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.4488550156184!2d77.66302227545846!3d27.45528217632791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397377bd3d9222e5%3A0xf7f3b4a11882fd2c!2sXyphramin%20Technologies!5e0!3m2!1sen!2sin!4v1735270032450!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
     </div>
   );
 };

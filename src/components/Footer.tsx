@@ -38,6 +38,9 @@ const Footer = () => {
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
+            <Link to="/dashboard" className="flex items-center text-gray-400 hover:text-white space-x-2 mt-4">
+              Admin Login 
+            </Link>
           </div>
 
           {/* Quick Links */}

@@ -16,6 +16,10 @@ import Login from "./components/Login";
 import { AuthProvider } from './context/AuthContext'; // Import the AuthProvider
 import Careers from './pages/Careers/Car';
 import CRUDJobs from './pages/dashboard/CRUDJobs';
+import CRUDProjects from './pages/dashboard/CRUDProjects';
+import CRUDBlogs from './pages/dashboard/CRUDBlogs';
+import CRUDApplications from './pages/dashboard/CRUDApplications';
+import CRUDTestimonial from './pages/dashboard/CRUDTestimonial';
 
 
 function App() {
@@ -38,6 +42,10 @@ function App() {
               <Route path="/blogs/:id" element={<BlogDetail />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/jobs" element={<CRUDJobs />} />
+              <Route path="/dashboard/projects" element={<CRUDProjects />} />
+              <Route path="/dashboard/blogs" element={<CRUDBlogs />} />
+              <Route path='dashboard/messages' element={<CRUDApplications />} />
+              <Route path='dashboard/testimonials' element={<CRUDTestimonial />} />
               <Route path="/login" element={<Login />} />
             </Routes>
           </main>
