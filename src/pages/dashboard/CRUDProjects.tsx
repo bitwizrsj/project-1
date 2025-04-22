@@ -171,68 +171,6 @@ const CRUDProjects = () => {
                     )}
 
                     <div className="py-6 space-y-8">
-                        {/* Projects List */}
-                        <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
-                            <div className="border-b border-gray-200 p-4 bg-gray-50">
-                                <h2 className="text-xl font-semibold text-gray-800">Manage Projects</h2>
-                            </div>
-                            <div className="p-0">
-                                {projects.length === 0 ? (
-                                    <div className="p-6 text-center text-gray-500">
-                                        No projects found. Create your first project below.
-                                    </div>
-                                ) : (
-                                    <div className="divide-y divide-gray-200">
-                                        {projects.map((project) => (
-                                            <div key={project._id} className="flex justify-between items-center p-4 hover:bg-gray-50 transition">
-                                                <div className="flex items-center gap-4 flex-1 mr-4">
-                                                    <div className="w-16 h-16 rounded-md overflow-hidden bg-gray-100">
-                                                        {project.image && (
-                                                            <img
-                                                                src={`http://localhost:5002${project.image}`}
-                                                                alt={project.title}
-                                                                className="w-full h-full object-cover"
-                                                            />
-                                                        )}
-                                                    </div>
-                                                    <div>
-                                                        <p className="font-semibold text-gray-900">{project.title}</p>
-                                                        <p className="text-sm text-gray-600 line-clamp-1">{project.description}</p>
-                                                        <div className="flex flex-wrap gap-1 mt-1">
-                                                            {project.technologies.map((tech, index) => (
-                                                                <span key={index} className="px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs">
-                                                                    {tech}
-                                                                </span>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="flex gap-2">
-                                                    <button
-                                                        onClick={() => {
-                                                            setEditingProject(project);
-                                                            setImageFile(null);
-                                                        }}
-                                                        className="p-2 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-md transition text-sm flex items-center gap-1"
-                                                    >
-                                                        <Edit size={16} />
-                                                        <span className="sr-only md:not-sr-only">Edit</span>
-                                                    </button>
-                                                    <button
-                                                        onClick={() => handleDeleteProject(project._id)}
-                                                        className="p-2 bg-red-100 hover:bg-red-200 text-red-800 rounded-md transition text-sm flex items-center gap-1"
-                                                    >
-                                                        <Trash2 size={16} />
-                                                        <span className="sr-only md:not-sr-only">Delete</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-
                         {/* Create/Edit Project Form */}
                         <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
                             <div className="border-b border-gray-200 p-4 bg-gray-50">
@@ -353,6 +291,70 @@ const CRUDProjects = () => {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Projects List */}
+                        <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+                            <div className="border-b border-gray-200 p-4 bg-gray-50">
+                                <h2 className="text-xl font-semibold text-gray-800">Manage Projects</h2>
+                            </div>
+                            <div className="p-0">
+                                {projects.length === 0 ? (
+                                    <div className="p-6 text-center text-gray-500">
+                                        No projects found. Create your first project below.
+                                    </div>
+                                ) : (
+                                    <div className="divide-y divide-gray-200">
+                                        {projects.map((project) => (
+                                            <div key={project._id} className="flex justify-between items-center p-4 hover:bg-gray-50 transition">
+                                                <div className="flex items-center gap-4 flex-1 mr-4">
+                                                    <div className="w-16 h-16 rounded-md overflow-hidden bg-gray-100">
+                                                        {project.image && (
+                                                            <img
+                                                                src={project.image}
+                                                                alt={project.title}
+                                                                className="w-full h-full object-cover"
+                                                            />
+                                                        )}
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-semibold text-gray-900">{project.title}</p>
+                                                        <p className="text-sm text-gray-600 line-clamp-1">{project.description}</p>
+                                                        <div className="flex flex-wrap gap-1 mt-1">
+                                                            {project.technologies.map((tech, index) => (
+                                                                <span key={index} className="px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs">
+                                                                    {tech}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="flex gap-2">
+                                                    <button
+                                                        onClick={() => {
+                                                            setEditingProject(project);
+                                                            setImageFile(null);
+                                                        }}
+                                                        className="p-2 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-md transition text-sm flex items-center gap-1"
+                                                    >
+                                                        <Edit size={16} />
+                                                        <span className="sr-only md:not-sr-only">Edit</span>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleDeleteProject(project._id)}
+                                                        className="p-2 bg-red-100 hover:bg-red-200 text-red-800 rounded-md transition text-sm flex items-center gap-1"
+                                                    >
+                                                        <Trash2 size={16} />
+                                                        <span className="sr-only md:not-sr-only">Delete</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>

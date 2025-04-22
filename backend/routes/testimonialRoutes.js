@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Testimonial = require("../models/Testimonial");
-const upload = require("../middleware/uploadMiddleware"); // Assuming you've created the upload middleware
 
 // Get all testimonials
 router.get("/", async (req, res) => {
@@ -13,24 +12,22 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Add a new testimonial with image upload
-router.post("/", upload.single("image"), async (req, res) => {
+// Add a new testimonial (no image upload)
+router.post("/", async (req, res) => {
   try {
     const { content, name, role, stars } = req.body;
-    const image = req.file.path; // Image is uploaded and path is stored
 
     const newTestimonial = new Testimonial({
       content,
       name,
       role,
-      image,
-      stars
+      stars,
     });
 
     await newTestimonial.save();
     res.status(201).json({
       message: "Testimonial added successfully!",
-      testimonial: newTestimonial
+      testimonial: newTestimonial,
     });
   } catch (err) {
     console.error("Error adding testimonial:", err);
@@ -38,14 +35,12 @@ router.post("/", upload.single("image"), async (req, res) => {
   }
 });
 
-// Update an existing testimonial by ID
-router.put("/:id", upload.single("image"), async (req, res) => {
+// Update an existing testimonial by ID (no image handling)
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { content, name, role, stars } = req.body;
-  const image = req.file ? req.file.path : undefined; // Image might be updated (if provided)
 
   try {
-    // Find and update the testimonial by ID
     const updatedTestimonial = await Testimonial.findByIdAndUpdate(
       id,
       {
@@ -53,7 +48,6 @@ router.put("/:id", upload.single("image"), async (req, res) => {
         name,
         role,
         stars,
-        image: image ? image : undefined, // Update image only if new one is provided
       },
       { new: true }
     );
@@ -77,7 +71,6 @@ router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    // Find and delete the testimonial by ID
     const deletedTestimonial = await Testimonial.findByIdAndDelete(id);
 
     if (!deletedTestimonial) {

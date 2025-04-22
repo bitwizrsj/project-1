@@ -11,12 +11,12 @@ const getTestimonials = async (req, res) => {
   }
 };
 
-// Create a new testimonial
+// Create a new testimonial (no image)
 const createTestimonial = async (req, res) => {
-  const { name, role, content, stars, image } = req.body;
+  const { name, role, content, stars } = req.body;
 
   try {
-    const newTestimonial = new Testimonial({ name, role, content, stars, image });
+    const newTestimonial = new Testimonial({ name, role, content, stars });
     await newTestimonial.save();
     res.status(201).json(newTestimonial);
   } catch (error) {
@@ -24,15 +24,15 @@ const createTestimonial = async (req, res) => {
   }
 };
 
-// Update a testimonial
+// Update a testimonial (no image)
 const updateTestimonial = async (req, res) => {
   const { id } = req.params;
-  const { name, role, content, stars, image } = req.body;
+  const { name, role, content, stars } = req.body;
 
   try {
     const updatedTestimonial = await Testimonial.findByIdAndUpdate(
       id,
-      { name, role, content, stars, image },
+      { name, role, content, stars },
       { new: true }
     );
 

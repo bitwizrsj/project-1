@@ -4,15 +4,26 @@ import { Link } from "react-router-dom";
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch("http://localhost:5002/api/blogs");
-        const data = await response.json();
-        setBlogs(data);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        
+        // Check if the response has the expected structure
+        if (result.success && Array.isArray(result.data)) {
+          setBlogs(result.data);
+        } else {
+          throw new Error("Unexpected response structure");
+        }
       } catch (error) {
         console.error("Error fetching blogs:", error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -23,6 +34,10 @@ const Blog = () => {
 
   if (loading) {
     return <div className="text-center py-16">Loading blogs...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-16 text-red-500">Error: {error}</div>;
   }
 
   return (
@@ -39,23 +54,27 @@ const Blog = () => {
                 <div className="flex gap-4 items-center">
                   {/* Main Image */}
                   <div className="mb-4">
-                    <img
-                      src={`http://localhost:5002${blog.mainImage}`}
-                      alt={blog.title}
-                      className="w-20 h-20 object-cover rounded-lg shadow-md"
-                    />
+                    {blog.mainImage && (
+                      <img
+                        src={blog.mainImage} // Use the full Cloudinary URL directly
+                        alt={blog.title}
+                        className="w-20 h-20 object-cover rounded-lg shadow-md"
+                      />
+                    )}
                   </div>
                   {/* Title and Link */}
-                  <h3 className="text-2xl font-semibold text-purple-600 hover:text-blue-800 transition-colors">
-                    <Link to={`/blogs/${blog._id}`}>{blog.title}</Link>
-                  </h3>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-purple-600 hover:text-blue-800 transition-colors">
+                      <Link to={`/blogs/${blog._id}`}>{blog.title}</Link>
+                    </h3>
+                    {/* Description */}
+                    <p className="text-gray-600 mt-2">{blog.description}</p>
+                    {/* Date - using createdAt from your model */}
+                    <p className="text-gray-500 text-sm mt-2">
+                      {new Date(blog.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
                 </div>
-                {/* Description */}
-                <p className="text-gray-600 mt-2">{blog.description}</p>
-                {/* Date */}
-                <p className="text-gray-500 text-sm mt-2">
-                  {new Date(blog.date).toLocaleDateString()}
-                </p>
               </div>
             ))
           ) : (

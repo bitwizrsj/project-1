@@ -4,7 +4,7 @@ import { Users, Award, Code2, Building2 } from "lucide-react";
 
 const Stats = () => {
   return (
-    <div className="bg-gray-800 w-4/5 text-purple-300 py-12 rounded-3xl m-auto mb-10">
+    <div className="bg-gray-900 w-4/5 text-purple-300 py-12 rounded-3xl m-auto mb-10">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat, index) => (

@@ -9,7 +9,6 @@ interface Testimonial {
   content: string;
   name: string;
   role: string;
-  image: string;
   stars: number;
   createdAt: string;
 }
@@ -20,11 +19,9 @@ const CRUDTestimonial = () => {
     content: "",
     name: "",
     role: "",
-    image: "",
     stars: 5
   });
   const [editingTestimonial, setEditingTestimonial] = useState<Testimonial | null>(null);
-  const [imageFile, setImageFile] = useState<File | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { isAuthenticated } = useAuth();
@@ -43,44 +40,24 @@ const CRUDTestimonial = () => {
     fetchTestimonials();
   }, []);
 
-  // Handle image file selection
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImageFile(e.target.files[0]);
-    }
-  };
-
   // Handle creating a new testimonial
   const handleCreateTestimonial = async () => {
-    if (!newTestimonial.content || !newTestimonial.name || !newTestimonial.role || !imageFile) {
-      setError("All fields except stars are required.");
+    if (!newTestimonial.content || !newTestimonial.name || !newTestimonial.role) {
+      setError("All fields are required.");
       return;
     }
 
     setIsLoading(true);
     try {
-      const formData = new FormData();
-      formData.append('content', newTestimonial.content);
-      formData.append('name', newTestimonial.name);
-      formData.append('role', newTestimonial.role);
-      formData.append('stars', newTestimonial.stars.toString());
-      formData.append('image', imageFile);
-
-      const response = await axios.post("http://localhost:5002/api/testimonials", formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+      const response = await axios.post("http://localhost:5002/api/testimonials", newTestimonial);
 
       setTestimonials([...testimonials, response.data]);
       setNewTestimonial({
         content: "",
         name: "",
         role: "",
-        image: "",
         stars: 5
       });
-      setImageFile(null);
       setError(null);
     } catch (err) {
       setError("Failed to create testimonial.");
@@ -95,23 +72,9 @@ const CRUDTestimonial = () => {
 
     setIsLoading(true);
     try {
-      const formData = new FormData();
-      formData.append('content', editingTestimonial.content);
-      formData.append('name', editingTestimonial.name);
-      formData.append('role', editingTestimonial.role);
-      formData.append('stars', editingTestimonial.stars.toString());
-      if (imageFile) {
-        formData.append('image', imageFile);
-      }
-
       const response = await axios.put(
         `http://localhost:5002/api/testimonials/${editingTestimonial._id}`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
+        editingTestimonial
       );
 
       setTestimonials(
@@ -120,7 +83,6 @@ const CRUDTestimonial = () => {
         )
       );
       setEditingTestimonial(null);
-      setImageFile(null);
       setError(null);
     } catch (err) {
       setError("Failed to update testimonial.");
@@ -160,8 +122,10 @@ const CRUDTestimonial = () => {
   }
 
   return (
+    <>
+    <div className="bg-slate-900 h-16 w-full"></div>
     <div className="min-h-screen bg-gray-50 text-gray-800 p-6">
-      <div className="bg-white h-16 w-full shadow-sm"></div>
+
       <div className="container mx-auto max-w-6xl">
         <header className="mb-8">
           <div className="flex items-center gap-4">
@@ -184,64 +148,6 @@ const CRUDTestimonial = () => {
         )}
 
         <div className="py-6 space-y-8">
-          {/* Testimonials List */}
-          <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
-            <div className="border-b border-gray-200 p-4 bg-gray-50">
-              <h2 className="text-xl font-semibold text-gray-800">Manage Testimonials ({testimonials.length})</h2>
-            </div>
-            <div className="p-0">
-              {testimonials.length === 0 ? (
-                <div className="p-6 text-center text-gray-500">
-                  No testimonials found. Create your first testimonial below.
-                </div>
-              ) : (
-                <div className="divide-y divide-gray-200">
-                  {testimonials.map((testimonial) => (
-                    <div key={testimonial._id} className="p-4 hover:bg-gray-50 transition">
-                      <div className="flex items-start gap-4">
-                        <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-100 flex-shrink-0">
-                          <img 
-                            src={`http://localhost:5002/${testimonial.image}`} 
-                            alt={testimonial.name} 
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
-                              <p className="text-sm text-gray-600">{testimonial.role}</p>
-                              {renderStars(testimonial.stars)}
-                            </div>
-                            <div className="flex gap-2">
-                              <button
-                                onClick={() => {
-                                  setEditingTestimonial(testimonial);
-                                  setImageFile(null);
-                                }}
-                                className="p-2 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-md transition"
-                                title="Edit"
-                              >
-                                <Edit size={16} />
-                              </button>
-                              <button
-                                onClick={() => handleDeleteTestimonial(testimonial._id)}
-                                className="p-2 bg-red-100 hover:bg-red-200 text-red-800 rounded-md transition"
-                                title="Delete"
-                              >
-                                <Trash2 size={16} />
-                              </button>
-                            </div>
-                          </div>
-                          <p className="mt-2 text-gray-600">{testimonial.content}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
 
           {/* Create/Edit Testimonial Form */}
           <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
@@ -312,27 +218,6 @@ const CRUDTestimonial = () => {
                     ))}
                   </select>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    {editingTestimonial ? 'Update Client Photo (optional)' : 'Client Photo (required)'}
-                  </label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                    className="w-full p-3 bg-white border border-gray-300 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  {editingTestimonial && !imageFile && (
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">Current photo:</p>
-                      <img 
-                        src={`http://localhost:5002${editingTestimonial.image}`} 
-                        alt={editingTestimonial.name} 
-                        className="w-16 h-16 rounded-full object-cover mt-1"
-                      />
-                    </div>
-                  )}
-                </div>
               </div>
               <div className="flex justify-end pt-4">
                 {editingTestimonial ? (
@@ -340,7 +225,6 @@ const CRUDTestimonial = () => {
                     <button
                       onClick={() => {
                         setEditingTestimonial(null);
-                        setImageFile(null);
                       }}
                       className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md transition"
                     >
@@ -362,7 +246,7 @@ const CRUDTestimonial = () => {
                 ) : (
                   <button
                     onClick={handleCreateTestimonial}
-                    disabled={isLoading || !newTestimonial.content || !newTestimonial.name || !newTestimonial.role || !imageFile}
+                    disabled={isLoading || !newTestimonial.content || !newTestimonial.name || !newTestimonial.role}
                     className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition flex items-center gap-2 disabled:opacity-70"
                   >
                     {isLoading ? 'Creating...' : (
@@ -376,9 +260,64 @@ const CRUDTestimonial = () => {
               </div>
             </div>
           </div>
+          
+          {/* Testimonials List */}
+          <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+            <div className="border-b border-gray-200 p-4 bg-gray-50">
+              <h2 className="text-xl font-semibold text-gray-800">Manage Testimonials ({testimonials.length})</h2>
+            </div>
+            <div className="p-0">
+              {testimonials.length === 0 ? (
+                <div className="p-6 text-center text-gray-500">
+                  No testimonials found. Create your first testimonial below.
+                </div>
+              ) : (
+                <div className="divide-y divide-gray-200">
+                  {testimonials.map((testimonial) => (
+                    <div key={testimonial._id} className="p-4 hover:bg-gray-50 transition">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-1">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
+                              <p className="text-sm text-gray-600">{testimonial.role}</p>
+                              {renderStars(testimonial.stars)}
+                            </div>
+                            <div className="flex gap-2">
+                              <button
+                                onClick={() => {
+                                  setEditingTestimonial(testimonial);
+                                }}
+                                className="p-2 bg-amber-100 hover:bg-amber-200 text-amber-800 rounded-md transition"
+                                title="Edit"
+                              >
+                                <Edit size={16} />
+                              </button>
+                              <button
+                                onClick={() => handleDeleteTestimonial(testimonial._id)}
+                                className="p-2 bg-red-100 hover:bg-red-200 text-red-800 rounded-md transition"
+                                title="Delete"
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </div>
+                          </div>
+                          <p className="mt-2 text-gray-600">{testimonial.content}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+          
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 
